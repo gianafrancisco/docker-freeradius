@@ -4,7 +4,7 @@ ADD fs/ /
 
 MAINTAINER Francisco Giana <gianafrancisco@gmail.com>
 
-RUN cd /opt/ && tar -zxvf /opt/freeradius.tgz && ldconfig
+RUN apt-get update && apt-get install libmysqlclient18 libpq5 && cd /opt/ && tar -zxvf /opt/freeradius.tgz && ldconfig
 
 EXPOSE 1812 1813
 
