@@ -12,4 +12,5 @@ RUN apt-get update && \
 
 EXPOSE 1812 1813 80
 
-CMD /opt/freeradius/sbin/radiusd -X
+CMD service apache2 start && \
+    /opt/freeradius/sbin/radiusd -X
