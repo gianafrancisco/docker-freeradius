@@ -12,10 +12,12 @@ RUN apt-get update && \
 	cd /var/www/ && tar -zxvf daloradius-0.9-9.tar.gz && mv daloradius-0.9-9 daloradius && chown www-data.www-data -R daloradius
 RUN     echo "mysql-server mysql-server/root_password password toor" | debconf-set-selections && \
 	echo "mysql-server mysql-server/root_password_again password toor" | debconf-set-selections && \
-	apt-get -y install mysql-server
+	apt-get -y install mysql-server && sh /mysqlSchema.sh
 
 EXPOSE 1812 1813 80
 
-CMD service apache2 start && \
-    service mysql start && \
-    /opt/freeradius/sbin/radiusd -X
+ENTRYPOINT /init.sh
+
+#CMD service apache2 start && \
+#    service mysql start && \
+#    /opt/freeradius/sbin/radiusd -X
