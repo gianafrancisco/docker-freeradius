@@ -5,3 +5,5 @@ mysql -D radius -u root --password=toor < /opt/freeradius/etc/raddb/sql/mysql/ad
 mysql -D radius -u root --password=toor < /opt/freeradius/etc/raddb/sql/mysql/nas.sql
 mysql -D radius -u root --password=toor < /opt/freeradius/etc/raddb/sql/mysql/schema.sql
 mysql -D radius -u root --password=toor < /var/www/daloradius/contrib/db/fr2-mysql-daloradius-and-freeradius.sql
+echo "GRANT ALL ON radius.* TO 'radius'@'localhost';" >/tmp/grant
+mysql -u root --password=toor < /tmp/grant
