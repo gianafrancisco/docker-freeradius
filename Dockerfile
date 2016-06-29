@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM ubuntu:14.04
 
 ADD fs/ /
 
@@ -23,7 +23,3 @@ RUN     echo "mysql-server mysql-server/root_password password toor" | debconf-s
 EXPOSE 1812 1813 80
 
 ENTRYPOINT /init.sh
-
-#CMD service apache2 start && \
-#    service mysql start && \
-#    /opt/freeradius/sbin/radiusd -X
